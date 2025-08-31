@@ -1,0 +1,17 @@
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.log
+
+# IDE / SO
+.idea/
+.vscode/
+.DS_Store
+
+# Builds/arquivos soltos
+*.zip
+
+# Env (se algum dia usar)
+.env*
