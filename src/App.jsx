@@ -74,6 +74,7 @@ function DateBR({ value, onChange, ...rest }){
 }
 
 export default function App(){
+  const BASE = import.meta.env.BASE_URL;
   const TITLE = 'Protótipo — Eventos Fundação Cultural'
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
   useEffect(()=>{
@@ -106,10 +107,10 @@ export default function App(){
 
   /* carregar dados */
   useEffect(() => {
-    fetch('/data/events.json', { cache: 'no-store' })
-      .then(r => r.json()).then(setAll)
-      .catch(()=>setAll([]))
-  }, [])
+  fetch(`${BASE}data/events.json`, { cache: 'no-store' })
+    .then(r => r.json()).then(setAll)
+    .catch(()=>setAll([]))
+  }, [BASE])
   useEffect(()=>{ setPage(1) }, [q, ods, datePreset, fromDate, toDate, all])
 
   /* filtragem */
@@ -228,7 +229,7 @@ export default function App(){
     <div className="wrap">
       <header className="siteHeader">
         <div className="brand">
-          <img src="/img/fundacao-cultural.webp" alt="" />
+          <img src={`${BASE}img/fundacao-cultural.webp`} alt="" />
           <div className="brandStack">
             <h1 className="title">{TITLE}</h1>
             <p className="subtitle">Explorar, filtrar e validar eventos reais</p>
